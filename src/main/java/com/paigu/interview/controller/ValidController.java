@@ -1,0 +1,30 @@
+package com.paigu.interview.controller;
+
+import com.paigu.interview.entity.Book;
+import com.paigu.interview.utils.CommonResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.constraints.NotBlank;
+
+/**
+ * 验证的控制器
+ *
+ * @author LiaoXM
+ * @date 2021/10/27
+ */
+@RestController
+@RequestMapping("/valid")
+@Validated
+public class ValidController {
+
+	@PostMapping("/requesttest")
+	public CommonResult bankValid(@Validated @RequestBody Book book){
+		return CommonResult.ok("保存成功");
+	}
+
+	@GetMapping("/gettest")
+	public CommonResult getValid(@NotBlank(message = "姓名不能为空") String name){
+		return CommonResult.ok("保存成功");
+	}
+}

@@ -1,5 +1,6 @@
 package com.paigu.interview.entity;
 
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 
 /**
@@ -11,14 +12,17 @@ import java.math.BigDecimal;
 public class Book {
 	public Book(){
 	}
-   public  Book(String bookName){;
+
+	public Book(String bookName){
 		this.bookName = bookName;
-   }
+	}
+
 	public Book(String bookName, BigDecimal bookPrice){
 		this(bookName);
 		this.bookPrice = bookPrice;
 	}
 
+	@NotBlank(message = "书名不能为空")
 	private String bookName;
 	private BigDecimal bookPrice;
 

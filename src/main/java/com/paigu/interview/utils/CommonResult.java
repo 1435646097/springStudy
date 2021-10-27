@@ -36,6 +36,10 @@ public class CommonResult {
 		return new CommonResult(0, msg);
 	}
 
+	public static CommonResult ok(String msg){
+		return new CommonResult(1, msg, null);
+	}
+
 	public static CommonResult ok(Object data){
 		return new CommonResult(1, "", data);
 	}
