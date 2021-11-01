@@ -2,6 +2,7 @@ package com.paigu.interview.entity;
 
 import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 /**
  * 书
@@ -40,5 +41,22 @@ public class Book {
 
 	public void setBookPrice(BigDecimal bookPrice){
 		this.bookPrice = bookPrice;
+	}
+
+	@Override
+	public boolean equals(Object o){
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Book book = (Book) o;
+		return Objects.equals(bookName, book.bookName) && Objects.equals(bookPrice, book.bookPrice);
+	}
+
+	@Override
+	public int hashCode(){
+		return Objects.hash(bookName, bookPrice);
 	}
 }
