@@ -36,4 +36,10 @@ public class BookServiceImpl implements IBookService {
 		HttpUtil.get("asd");
 		return list;
 	}
+
+	@Override
+	public void saveBook(Book book){
+		System.out.println(book);
+		System.out.println("成功保存一本书");
+	}
 }

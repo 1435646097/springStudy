@@ -18,4 +18,11 @@ public interface IBookService {
 	 * @return {@link List}<{@link Book}>
 	 */
 	List<Book> getBookList(String test);
+
+	/**
+	 * 保存的书
+	 *
+	 * @param book 书
+	 */
+	void saveBook(Book book);
 }
