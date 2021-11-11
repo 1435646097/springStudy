@@ -12,12 +12,11 @@ import org.springframework.stereotype.Component;
 public class BookListener {
 	private final IBookService bookService;
 
-	@Async("taskExecutor")
+	@Async("bookTaskExecutor")
 	@EventListener(BookEvent.class)
 	public void bookEvent(BookEvent bookEvent){
-		Book book = (Book)bookEvent.getSource();
+		Book book = (Book) bookEvent.getSource();
 		System.out.println(Thread.currentThread().getName());
-		System.out.println(Thread.currentThread().getId());
 		bookService.saveBook(book);
 	}
 }

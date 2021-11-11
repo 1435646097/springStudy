@@ -40,7 +40,7 @@ public class BookController {
 
 	@GetMapping("/event")
 	public CommonResult event(){
-		applicationContext.publishEvent(new BookEvent(new Book("事件出发了")));
+		applicationContext.publishEvent(new BookEvent(new Book("事件触发了")));
 		return CommonResult.ok("成功了");
 	}
 }
