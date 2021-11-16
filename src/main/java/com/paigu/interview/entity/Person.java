@@ -1,6 +1,12 @@
 package com.paigu.interview.entity;
 
 
+/**
+ * 人类
+ *
+ * @author PaiGu
+ * @date 2021/11/09
+ */
 public class Person {
 	private Person(){
 	}
