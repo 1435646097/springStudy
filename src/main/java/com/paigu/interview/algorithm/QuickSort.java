@@ -11,45 +11,44 @@ import java.util.Arrays;
  */
 public class QuickSort {
 	public static void main(String[] args){
-		int[] arr = {2, -30, 4, 5, 77, 31, 1, 0, 1, 100, 3, 10};
-		quickSort(arr, arr.length - 1, 0);
+		int[] arr = {2, -30, 4, 5, 77, 31, 1, 0, 1, 100, 3, 10, 31, 20, 11, 2, 2, 2};
+		quickSort(arr, 0, arr.length - 1);
 		System.out.println(Arrays.toString(arr));
 	}
 
-
-	private static void quickSort(int[] arr, int high, int low){
-		int l = low;
-		int r = high;
-		int pivot = arr[(l + r) / 2];
-		while (l < r) {
-			while (arr[l] < pivot) {
-				l++;
+	private static void quickSort(int[] arr, int low, int high){
+		int left = low;
+		int right = high;
+		int pivot = arr[(low + high) / 2];
+		while (left < right) {
+			while (arr[left] < pivot) {
+				left++;
 			}
-			while (arr[r] > pivot) {
-				r--;
+			while (arr[right] > pivot) {
+				right--;
 			}
-			if (l >= r) {
+			if (left == right) {
 				break;
 			}
-			int temp = arr[l];
-			arr[l] = arr[r];
-			arr[r] = temp;
-			if (arr[l] == pivot) {
-				r--;
+			int temp = arr[left];
+			arr[left] = arr[right];
+			arr[right] = temp;
+			if (arr[left] == pivot) {
+				right--;
 			}
-			if (arr[r] == pivot) {
-				l++;
+			if (arr[right] == pivot) {
+				left++;
 			}
 		}
-		if (l == r) {
-			l++;
-			r--;
+		if (left == right) {
+			left++;
+			right--;
 		}
-		if (l < high) {
-			quickSort(arr, high, l);
+		if (right > low) {
+			quickSort(arr, low, right);
 		}
-		if (low < r) {
-			quickSort(arr, r, low);
+		if (left < high) {
+			quickSort(arr, left, high);
 		}
 	}
 }
