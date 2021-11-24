@@ -1,10 +1,12 @@
 package com.paigu.interview.controller;
 
+import com.paigu.interview.Validator.Book.BookValid;
 import com.paigu.interview.entity.Book;
 import com.paigu.interview.utils.CommonResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
 /**
@@ -19,12 +21,17 @@ import javax.validation.constraints.NotBlank;
 public class ValidController {
 
 	@PostMapping("/requesttest")
-	public CommonResult bankValid(@Validated @RequestBody Book book){
+	public CommonResult bankValid(@Valid @RequestBody Book book){
 		return CommonResult.ok("保存成功");
 	}
 
 	@GetMapping("/gettest")
 	public CommonResult getValid(@NotBlank(message = "姓名不能为空") String name){
 		return CommonResult.ok("保存成功");
+	}
+
+	@PostMapping("/book-valid")
+	public CommonResult boolValid(@BookValid @RequestBody Book book){
+		return CommonResult.ok(book);
 	}
 }
