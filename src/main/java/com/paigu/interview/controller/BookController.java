@@ -5,6 +5,7 @@ import com.paigu.interview.entity.Book;
 import com.paigu.interview.event.BookEvent;
 import com.paigu.interview.service.IBookService;
 import com.paigu.interview.utils.CommonResult;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2021/08/23
  */
 @RestController
+@Slf4j
 public class BookController {
 	public BookController(@Qualifier("bookService") IBookService bookService, ApplicationContext applicationContext, Environment environment){
 		this.bookService = bookService;
@@ -51,6 +53,7 @@ public class BookController {
 	public CommonResult environment(){
 		System.out.println(environment);
 		String property = environment.getProperty("rsa.private-key");
+		log.info("密钥为{}", property);
 		return CommonResult.ok(property);
 	}
 }
