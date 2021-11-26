@@ -1,6 +1,7 @@
 package com.paigu.interview.controller;
 
 import com.paigu.interview.Validator.Book.BookValid;
+import com.paigu.interview.Validator.IdCard.IdCardValid;
 import com.paigu.interview.entity.Book;
 import com.paigu.interview.utils.CommonResult;
 import org.springframework.validation.annotation.Validated;
@@ -33,5 +34,10 @@ public class ValidController {
 	@PostMapping("/book-valid")
 	public CommonResult boolValid(@BookValid @RequestBody Book book){
 		return CommonResult.ok(book);
+	}
+
+	@GetMapping("/id-card")
+	public CommonResult idCardValid(@IdCardValid String idCard){
+		return CommonResult.ok("校验成功:" + idCard);
 	}
 }

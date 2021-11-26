@@ -1,4 +1,4 @@
-package com.paigu.interview.Validator.Book;
+package com.paigu.interview.Validator.IdCard;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -10,17 +10,17 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * 书校验
+ * 校验身份证是否有效
  *
  * @author LiaoXM
- * @date 2021/11/24
+ * @date 2021/11/26
  */
 @Documented
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
-@Constraint(validatedBy = {BookValidator.class})
-public @interface BookValid {
-	String message() default "请填写正确的书的信息";
+@Constraint(validatedBy = {IdCardValidator.class})
+public @interface IdCardValid {
+	String message() default "请填写正确的身份证";
 
 	Class<?>[] groups() default {};
 
