@@ -16,7 +16,7 @@ public class ProxyMain {
 		result = login.isSuccess("admin", "123456");
 		System.out.println(result);
 		//JDK方式
-		Login loginProxy = JdkDynamicFactory.getLoginProxy(new UserNamePasswordLogin());
+		Login loginProxy = (Login) JdkDynamicFactory.getLoginProxy(new UserNamePasswordLogin());
 		result = loginProxy.isSuccess("admin", "123456");
 		System.out.println(result);
 		//CGLIB

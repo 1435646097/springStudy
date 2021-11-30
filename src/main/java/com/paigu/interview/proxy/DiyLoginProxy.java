@@ -16,9 +16,9 @@ public class DiyLoginProxy implements Login {
 
 	@Override
 	public Boolean isSuccess(String name, String password){
-		System.out.println("登录前记录日志......");
+		System.out.println("DIY登录前记录日志......");
 		Boolean success = login.isSuccess(name, password);
-		System.out.println("登录完成......");
+		System.out.println("DIY登录完成......");
 		return success;
 	}
 }

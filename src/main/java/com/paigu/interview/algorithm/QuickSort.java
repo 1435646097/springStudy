@@ -6,7 +6,7 @@ import java.util.Arrays;
  * 快速排序
  *
  * @author PaiGu
- * @description PaiGu
+ * @description 快速排序
  * @date 2021/11/6 17:41
  */
 public class QuickSort {

@@ -10,7 +10,7 @@ public interface Login {
 	/**
 	 * 是否登录成功
 	 *
-	 * @param name     的名字
+	 * @param name     账号
 	 * @param password 密码
 	 * @return {@link Boolean}
 	 */

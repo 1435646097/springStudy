@@ -10,17 +10,17 @@ import java.lang.reflect.Method;
  * @date 2021/11/30
  */
 public class LoginInvocationHandler implements InvocationHandler {
-	private final Login login;
+	private final Object login;
 
-	public LoginInvocationHandler(Login login){
+	public LoginInvocationHandler(Object login){
 		this.login = login;
 	}
 
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable{
-		System.out.println("登录之前.......");
+		System.out.println("JDK登录之前.......");
 		Object result = method.invoke(login, args);
-		System.out.println("登录完成之后.......");
+		System.out.println("JDK登录完成之后.......");
 		return result;
 	}
 }

@@ -9,7 +9,7 @@ import java.lang.reflect.Proxy;
  * @date 2021/11/30
  */
 public class JdkDynamicFactory {
-	public static Login getLoginProxy(Login login){
-		return (Login)Proxy.newProxyInstance(login.getClass().getClassLoader(), login.getClass().getInterfaces(), new LoginInvocationHandler(login));
+	public static Object getLoginProxy(Object target){
+		return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), new LoginInvocationHandler(new UserNamePasswordLogin()));
 	}
 }
