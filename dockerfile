@@ -1,5 +1,5 @@
 FROM java:8
 workdir /root
-copy interview.jar /root/interview.jar
+copy interview.jar .
 expose 8080
-RUN ["java", "-jar", "interview.jar"]
+ENTRYPOINT ["java", "-jar", "interview.jar"]
