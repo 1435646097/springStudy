@@ -1,6 +1,5 @@
 package com.paigu.interview.service.impl;
 
-import cn.hutool.http.HttpUtil;
 import com.paigu.interview.aop.cache.redisCacheAnnotation;
 import com.paigu.interview.entity.Book;
 import com.paigu.interview.service.IBookService;
@@ -25,7 +24,7 @@ public class BookServiceImpl implements IBookService {
 		this.redisUtils = redisUtils;
 	}
 
-	private static List<Book> list = new ArrayList<>();
+	private static final List<Book> list = new ArrayList<>();
 
 	@Override
 	@redisCacheAnnotation(expire = 300)
@@ -33,7 +32,6 @@ public class BookServiceImpl implements IBookService {
 	public List<Book> getBookList(String test){
 		redisUtils.set("111", "222");
 		list.add(new Book("好看的书"));
-		HttpUtil.get("asd");
 		return list;
 	}
 
