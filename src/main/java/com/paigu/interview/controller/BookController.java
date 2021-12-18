@@ -1,5 +1,6 @@
 package com.paigu.interview.controller;
 
+import cn.hutool.core.net.NetUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import com.paigu.interview.entity.Book;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.net.InetAddress;
 
 
 /**
@@ -58,7 +60,9 @@ public class BookController {
 		if ("0:0:0:0:0:0:0:1".equals(clientIP)) {
 			clientIP = "127.0.0.1";
 		}
-		log.info("本机ip为：{}", clientIP);
+		log.info("访问ip为：{}", clientIP);
+		InetAddress localhost = NetUtil.getLocalhost();
+		log.info("本机ip为：{}", localhost.getHostAddress());
 		return CommonResult.ok(clientIP);
 	}
 
