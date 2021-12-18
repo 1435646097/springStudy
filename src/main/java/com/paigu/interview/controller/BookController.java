@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.net.InetAddress;
 
 
 /**
@@ -61,9 +60,9 @@ public class BookController {
 			clientIP = "127.0.0.1";
 		}
 		log.info("访问ip为：{}", clientIP);
-		InetAddress localhost = NetUtil.getLocalhost();
-		log.info("本机ip为：{}", localhost.getHostAddress());
-		return CommonResult.ok(clientIP);
+		String hostAddress = NetUtil.getLocalhost().getHostAddress();
+		log.info("本机ip为：{}", hostAddress);
+		return CommonResult.ok(clientIP + "----" + hostAddress);
 	}
 
 	@GetMapping("/environment")
