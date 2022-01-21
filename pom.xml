@@ -87,32 +87,6 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
     </dependencies>
-    <profiles>
-        <profile>
-            <id>dev</id>
-            <properties>
-                <profileActive>dev</profileActive>
-            </properties>
-            <activation>
-                <!-- 默认情况下使用dev开发配置 如 打包时不包含 -p 参数-->
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-        <!-- 集成测试环境 -->
-        <profile>
-            <id>pro</id>
-            <properties>
-                <profileActive>pro</profileActive>
-            </properties>
-        </profile>
-        <!-- 演示环境 -->
-        <profile>
-            <id>test</id>
-            <properties>
-                <profileActive>test</profileActive>
-            </properties>
-        </profile>
-    </profiles>
     <build>
         <plugins>
             <plugin>
