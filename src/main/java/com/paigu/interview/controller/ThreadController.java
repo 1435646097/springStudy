@@ -1,5 +1,6 @@
 package com.paigu.interview.controller;
 
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -21,6 +23,8 @@ import java.util.stream.IntStream;
 @RequestMapping("/thread")
 public class ThreadController {
 	Integer num = 0;
+
+	@SneakyThrows
 	@GetMapping
 	public String countDownLatch(){
 //		CountDownLatch countDownLatch = new CountDownLatch(100);
@@ -30,7 +34,8 @@ public class ThreadController {
 		                                                 .collect(Collectors.toList());
 //		countDownLatch.await(20, TimeUnit.SECONDS);
 		CompletableFuture<Void> voidCompletableFuture = CompletableFuture.allOf(collect.toArray(new CompletableFuture[0]));
-		voidCompletableFuture.join();
+		voidCompletableFuture.get(20, TimeUnit.SECONDS);
+
 		System.out.println("完成了");
 		log.info("完成了");
 		return "aaa";
