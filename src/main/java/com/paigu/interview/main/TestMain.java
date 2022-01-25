@@ -1,12 +1,15 @@
 package com.paigu.interview.main;
 
+import cn.hutool.core.util.StrUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
 public class TestMain {
-	public static void main(String[] args){
+	static Integer num = 0;
+	public static void main(String[] args) throws InterruptedException{
 		Stream<Integer> integerStream = Stream.of(2, 3, 4, 5, 4, 3, 3);
 		Optional<Integer> max = integerStream.max(Integer::compareTo);
 		System.out.println(max.get());
@@ -26,5 +29,12 @@ public class TestMain {
 		for (Integer integer : list) {
 			System.out.println(integer);
 		}
+		String str1 = "我的后勤保障组";
+//		String str2 = "感控督导员";
+		System.out.println(StrUtil.replace(str1, "后勤保障组", "感控督导员"));
+//		CompletableFuture.allOf()
+//		CompletableFuture.runAsync()
+//		AtomicInteger atomicInteger = new AtomicInteger();
+//		TimeUnit.SECONDS.sleep(1);
 	}
 }
