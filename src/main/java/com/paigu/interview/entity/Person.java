@@ -1,14 +1,21 @@
 package com.paigu.interview.entity;
 
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+
 /**
  * 人类
  *
  * @author PaiGu
  * @date 2021/11/09
  */
+@TableName("person")
+@Data
 public class Person {
-	private Person(){
+	public Person(){
 	}
 
 	private Person(Builder builder){
@@ -18,17 +25,18 @@ public class Person {
 		this.card = builder.card;
 		this.phone = builder.phone;
 	}
-
+	@TableId(type = IdType.ASSIGN_ID)
+	private Long id;
 	private String name;
-	private String age;
-	private String gender;
+	private Integer age;
+	private Character gender;
 	private String card;
 	private String phone;
 
 	public static class Builder {
 		private String name;
-		private String age;
-		private String gender;
+		private Integer age;
+		private Character gender;
 		private String card;
 		private String phone;
 
@@ -37,12 +45,12 @@ public class Person {
 			return this;
 		}
 
-		public Builder age(String age){
+		public Builder age(Integer age){
 			this.age = age;
 			return this;
 		}
 
-		public Builder gender(String gender){
+		public Builder gender(Character gender){
 			this.gender = gender;
 			return this;
 		}

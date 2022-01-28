@@ -15,11 +15,18 @@
     <description>interview</description>
     <properties>
         <java.version>1.8</java.version>
-        <hutool.version>5.7.16</hutool.version>
+        <hutool.version>5.7.20</hutool.version>
         <commons-pool2.version>2.10.0</commons-pool2.version>
         <fastjson.version>1.2.78</fastjson.version>
+        <mybatis-plus.version>3.5.1</mybatis-plus.version>
+        <druid-version>1.2.8</druid-version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -56,6 +63,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${druid-version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
