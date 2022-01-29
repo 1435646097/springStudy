@@ -1,6 +1,8 @@
 package com.paigu.interview;
 
+import com.paigu.interview.entity.Info;
 import com.paigu.interview.entity.Person;
+import com.paigu.interview.service.IInfoService;
 import com.paigu.interview.service.IPersonService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ public class MybatisPlusTest {
 
 	@Autowired
 	private IPersonService personService;
+	@Autowired
+	private IInfoService infoService;
 
 	@Test
 	void save(){
@@ -28,6 +32,8 @@ public class MybatisPlusTest {
 		                                    .phone("17674111268")
 		                                    .build();
 		personService.save(person);
+		Info info = new Info(person.getId(),"食品加工厂","郴州市三中","跑步");
+		infoService.save(info);
 	}
 
 	@Test
