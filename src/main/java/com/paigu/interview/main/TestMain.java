@@ -2,6 +2,9 @@ package com.paigu.interview.main;
 
 import cn.hutool.core.util.StrUtil;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,5 +39,12 @@ public class TestMain {
 //		CompletableFuture.runAsync()
 //		AtomicInteger atomicInteger = new AtomicInteger();
 //		TimeUnit.SECONDS.sleep(1);
+		double a = 0.1;
+		double b = 0.2;
+		System.out.println(a + b);
+		BigDecimal bigDecimal = BigDecimal.valueOf(0.1).add(BigDecimal.valueOf(0.256));
+		DecimalFormat decimalFormat = new DecimalFormat("#.##");
+		decimalFormat.setRoundingMode(RoundingMode.HALF_UP);
+		System.out.println(decimalFormat.format(bigDecimal));
 	}
 }
