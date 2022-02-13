@@ -40,7 +40,7 @@ public class BookController {
 	private String port;
 
 	@GetMapping("/pro/test")
-	public CommonResult test(String test){
+	public CommonResult test(String test,HttpServletRequest request){
 		if (StrUtil.isBlank(test)) {
 			return CommonResult.fail("test必填");
 		}

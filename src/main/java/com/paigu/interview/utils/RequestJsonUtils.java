@@ -1,11 +1,13 @@
 package com.paigu.interview.utils;
 
 
+import cn.hutool.core.net.URLDecoder;
 import cn.hutool.core.util.StrUtil;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class RequestJsonUtils {
 
@@ -24,7 +26,7 @@ public class RequestJsonUtils {
 				if (request.getQueryString() == null) {
 					return StrUtil.EMPTY;
 				}
-				return new String(request.getQueryString().getBytes("iso-8859-1"), "utf-8").replaceAll("%22", "\"");
+				return URLDecoder.decode(request.getQueryString(), StandardCharsets.UTF_8);
 				// POST PUT
 			} else {
 				return getRequestPostStr(request);
