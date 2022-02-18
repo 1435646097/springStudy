@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  * @author LiaoXM
  * @date 2021/09/14
  */
-@Target(ElementType.METHOD)
+@Target({ElementType.METHOD,ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface redisCacheAnnotation {
     int expire() default 86400;

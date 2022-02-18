@@ -24,4 +24,9 @@ public class TransactionalController {
 		personService.createPerson();
 		return CommonResult.ok("成功");
 	}
+	@GetMapping("/fail")
+	public CommonResult aopFail(){
+		personService.failPerson();
+		return CommonResult.ok("成功");
+	}
 }
