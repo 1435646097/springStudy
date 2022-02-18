@@ -23,7 +23,7 @@ public class CacheAop {
 	private ObjectMapper objectMapper;
 
 	@Around("@annotation(redisCache)")
-	public Object cache(ProceedingJoinPoint joinPoint, redisCacheAnnotation redisCache){
+	public Object cache(ProceedingJoinPoint joinPoint, redisCacheAnnotation redisCache) throws Throwable{
 		Object result = null;
 		MethodSignature signature = (MethodSignature) joinPoint.getSignature();
 		Method method = signature.getMethod();
@@ -32,6 +32,7 @@ public class CacheAop {
 			result = joinPoint.proceed();
 		} catch (Throwable e) {
 			e.printStackTrace();
+			throw e;
 		}
 		return result;
 	}
