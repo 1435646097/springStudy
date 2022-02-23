@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @Slf4j
 public class BookController {
-	public BookController(@Qualifier("bookService") IBookService bookService, ApplicationContext applicationContext, Environment environment){
+	public BookController(@Qualifier("bookService") IBookService bookService, @Lazy ApplicationContext applicationContext, Environment environment){
 		this.bookService = bookService;
 		this.applicationContext = applicationContext;
 		this.environment = environment;
@@ -44,6 +45,7 @@ public class BookController {
 		if (StrUtil.isBlank(test)) {
 			return CommonResult.fail("test必填");
 		}
+		log.info("GET请求参数:{}", request.getQueryString());
 		return CommonResult.ok(bookService.getBookList(test));
 	}
 

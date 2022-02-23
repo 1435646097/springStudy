@@ -16,7 +16,7 @@ import java.util.HashMap;
 @Component
 @Slf4j
 public class BookFlyweight implements InitializingBean {
-	HashMap<Integer, Book> bookHashMap;
+   public HashMap<Integer, Book> bookHashMap;
 
 	@Override
 	public void afterPropertiesSet(){
