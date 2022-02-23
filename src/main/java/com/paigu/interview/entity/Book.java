@@ -59,4 +59,12 @@ public class Book {
 	public int hashCode(){
 		return Objects.hash(bookName, bookPrice);
 	}
+
+	public void price(int price){
+		System.out.println("int ---" + price);
+	}
+
+	public void price(Integer price){
+		System.out.println("Integer ---" + price);
+	}
 }

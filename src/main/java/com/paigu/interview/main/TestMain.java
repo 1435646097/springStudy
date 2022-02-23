@@ -1,6 +1,8 @@
 package com.paigu.interview.main;
 
 import cn.hutool.core.util.StrUtil;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -46,5 +48,11 @@ public class TestMain {
 //		DecimalFormat decimalFormat = new DecimalFormat("#.##");
 //		decimalFormat.setRoundingMode(RoundingMode.HALF_UP);
 		System.out.println();
+//		$2a$10$Tpq9rseG8UZfv.xmHYfeZODmk10Q28yBObYyg0WpCOcVaEia28gtW
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		String encode = encoder.encode("123456");
+		System.out.println(encode);
+		System.out.println(encoder.matches("123456", "$2a$10$AAIo/hQr9UBrqLW5WeAGweMvJHqcVxdiEKJ8XQkZUN4xDvkS07dr."));
+
 	}
 }

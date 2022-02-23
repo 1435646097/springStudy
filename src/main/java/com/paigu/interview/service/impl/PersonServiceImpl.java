@@ -1,6 +1,7 @@
 package com.paigu.interview.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.paigu.interview.aop.cache.redisCacheAnnotation;
 import com.paigu.interview.entity.Info;
 import com.paigu.interview.entity.Person;
 import com.paigu.interview.mapper.PersonMapper;
@@ -48,7 +49,22 @@ public class PersonServiceImpl extends ServiceImpl<PersonMapper, Person> impleme
 		return true;
 	}
 
-//	@Transactional
+	@redisCacheAnnotation
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public void failPerson(){
+		Person person = new Person.Builder().name("张三")
+		                                    .age(20)
+		                                    .card("431024199911232123")
+		                                    .gender('1')
+		                                    .phone("17674111268")
+		                                    .build();
+		this.save(person);
+		int a = 10;
+		int b = a / 0;
+	}
+
+	//	@Transactional
 	public void subCreatePerson(){
 		Person person = new Person.Builder().name("张三")
 		                                    .age(20)

@@ -17,4 +17,9 @@ public interface IPersonService extends IService<Person> {
 	 * @return {@link Boolean}
 	 */
 	Boolean createPerson() throws IOException;
+
+	/**
+	 * 失败人
+	 */
+	void failPerson();
 }
