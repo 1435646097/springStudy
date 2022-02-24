@@ -53,6 +53,15 @@ public class TestMain {
 		String encode = encoder.encode("123456");
 		System.out.println(encode);
 		System.out.println(encoder.matches("123456", "$2a$10$AAIo/hQr9UBrqLW5WeAGweMvJHqcVxdiEKJ8XQkZUN4xDvkS07dr."));
-
+		StringBuilder sb = new StringBuilder();
+		for (int i = 1; i <= 9; i++) {
+			for (int j = 1; j <= 9; j++) {
+				if(j<=i){
+					sb.append(j).append("*").append(i).append("=").append(i*j).append("\t");
+				}
+			}
+			sb.append("\r\n");
+		}
+		System.out.println(sb);
 	}
 }

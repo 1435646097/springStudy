@@ -2,8 +2,10 @@ package com.paigu.interview.entity;
 
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.paigu.interview.aop.hide.HideAnnotation;
 import lombok.Data;
 
 /**
@@ -25,13 +27,18 @@ public class Person {
 		this.card = builder.card;
 		this.phone = builder.phone;
 	}
+
 	@TableId(type = IdType.ASSIGN_ID)
 	private Long id;
 	private String name;
 	private Integer age;
 	private Character gender;
+	@HideAnnotation(start = 2, end = 10)
 	private String card;
 	private String phone;
+	@TableField(exist = false)
+	@HideAnnotation
+	private Book book;
 
 	public static class Builder {
 		private String name;
@@ -72,12 +79,6 @@ public class Person {
 
 	@Override
 	public String toString(){
-		return "Person{" +
-				"name='" + name + '\'' +
-				", age='" + age + '\'' +
-				", gender='" + gender + '\'' +
-				", card='" + card + '\'' +
-				", phone='" + phone + '\'' +
-				'}';
+		return "Person{" + "name='" + name + '\'' + ", age='" + age + '\'' + ", gender='" + gender + '\'' + ", card='" + card + '\'' + ", phone='" + phone + '\'' + '}';
 	}
 }

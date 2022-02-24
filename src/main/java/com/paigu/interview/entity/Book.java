@@ -1,5 +1,7 @@
 package com.paigu.interview.entity;
 
+import com.paigu.interview.aop.hide.HideAnnotation;
+
 import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -23,6 +25,7 @@ public class Book {
 		this.bookPrice = bookPrice;
 	}
 
+	@HideAnnotation(start = 2, end = 8)
 	@NotBlank(message = "书名不能为空")
 	private String bookName;
 	private BigDecimal bookPrice;

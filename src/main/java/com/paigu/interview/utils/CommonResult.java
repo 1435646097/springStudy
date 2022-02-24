@@ -1,5 +1,6 @@
 package com.paigu.interview.utils;
 
+import com.paigu.interview.aop.hide.HideAnnotation;
 import lombok.Data;
 
 /**
@@ -12,6 +13,7 @@ import lombok.Data;
 public class CommonResult {
 	private Integer state;
 	private String msg;
+	@HideAnnotation
 	private Object data;
 
 	public CommonResult(String msg){
