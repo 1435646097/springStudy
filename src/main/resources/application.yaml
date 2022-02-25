@@ -28,4 +28,15 @@ mybatis-plus:
 #logging:
 #  level:
 #    org:
+management:
+  server:
+    port: 8080
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: "*"
+  health:
+    elasticsearch:
+      enabled: false
 #      mybatis: debug
