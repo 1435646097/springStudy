@@ -1,5 +1,7 @@
 package com.paigu.interview.main;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -30,5 +32,8 @@ public class MapMain {
 		//字符串靠左，多余的地方填充_
 		stringBuilder.append(String.format("%-10s", name).replace(' ', '_'));
 		System.out.println(stringBuilder);
+		BCryptPasswordEncoder bCryptPasswordEncoder= new BCryptPasswordEncoder();
+		String asd = bCryptPasswordEncoder.encode("我我我我");
+		System.out.println(asd);
 	}
 }
