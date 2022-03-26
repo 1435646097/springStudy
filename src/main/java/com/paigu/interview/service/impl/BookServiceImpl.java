@@ -24,15 +24,15 @@ public class BookServiceImpl implements IBookService {
 		this.redisUtils = redisUtils;
 	}
 
-	private static final List<Book> list = new ArrayList<>();
+	private static final List<Book> LIST = new ArrayList<>();
 
 	@Override
 	@redisCacheAnnotation(expire = 300)
 	@Cacheable(value = {"aaaa", "111"}, key = "#test")
 	public List<Book> getBookList(String test){
 		redisUtils.set("111", "222");
-		list.add(new Book("好看的书"));
-		return list;
+		LIST.add(new Book("好看的书"));
+		return LIST;
 	}
 
 	@Override

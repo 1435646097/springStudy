@@ -24,7 +24,7 @@ public class CacheAop {
 
 	@Around("@annotation(redisCache)")
 	public Object cache(ProceedingJoinPoint joinPoint, redisCacheAnnotation redisCache) throws Throwable{
-		Object result = null;
+		Object result;
 		MethodSignature signature = (MethodSignature) joinPoint.getSignature();
 		Method method = signature.getMethod();
 		try {
