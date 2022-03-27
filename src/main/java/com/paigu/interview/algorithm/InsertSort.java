@@ -16,22 +16,21 @@ public class InsertSort {
         }
     }
 
-    public static void insertSort(int[] arr) {
-        int length = arr.length;
-        if (length <= 1) {
+    public static void insertSort(int[] array) {
+        if (array.length <= 1) {
             return;
         }
-        for (int i = 1; i < arr.length; i++) {
-            int value = arr[i];
-            int j = i - 1;
-            for (; j >= 0; j--) {
-                if (arr[j] > value) {
-                    arr[j + 1] = arr[j];
+        for (int i = 1; i < array.length; i++) {
+            int value = array[i];
+            int index = i - 1;
+            for (; index >= 0; index--) {
+                if (array[index] > value) {
+                    array[index + 1] = array[index];
                 } else {
                     break;
                 }
             }
-            arr[j+1] = value;
+            array[index + 1] = value;
         }
     }
 }
