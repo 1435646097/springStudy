@@ -64,7 +64,7 @@ public class PersonServiceImpl extends ServiceImpl<PersonMapper, Person> impleme
 		int b = a / 0;
 	}
 
-	//	@Transactional
+	@Transactional
 	public void subCreatePerson(){
 		Person person = new Person.Builder().name("张三")
 		                                    .age(20)
