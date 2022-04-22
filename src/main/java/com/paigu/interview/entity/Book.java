@@ -1,10 +1,12 @@
 package com.paigu.interview.entity;
 
 import com.paigu.interview.aop.hide.HideAnnotation;
+import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.util.Objects;
+
 
 /**
  * 书
@@ -12,6 +14,7 @@ import java.util.Objects;
  * @author LiaoXM
  * @date 2021/08/31
  */
+@Data
 public class Book {
 	public Book(){
 	}

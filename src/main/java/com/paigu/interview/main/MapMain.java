@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 public class MapMain {
 	public static void main(String[] args){
 		HashMap<String, String> map = new HashMap<>(4);
-//		map.put("name", "李四");
-		String absent = map.putIfAbsent("name", "张三");
+		map.put("name", "李四");
+		String absent = map.put("name", "张三");
 		String absent2 = map.computeIfAbsent("name", key -> "赵丽颖");
 		String absent3 = map.computeIfPresent("name", (key, value) -> "赵丽颖");
 		System.out.println(absent);
@@ -34,6 +34,8 @@ public class MapMain {
 		System.out.println(stringBuilder);
 		BCryptPasswordEncoder bCryptPasswordEncoder= new BCryptPasswordEncoder();
 		String asd = bCryptPasswordEncoder.encode("我我我我");
-		System.out.println(asd);
+		System.out.println();
+		int s = 10 >>> 3;
+		System.out.println(s);
 	}
 }
