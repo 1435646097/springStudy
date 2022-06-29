@@ -1,9 +1,6 @@
 package com.paigu.interview.aop.cache;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * redis缓存注释
@@ -13,6 +10,7 @@ import java.lang.annotation.Target;
  */
 @Target({ElementType.METHOD,ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface redisCacheAnnotation {
+@Inherited
+public @interface RedisCacheAnnotation {
     int expire() default 86400;
 }

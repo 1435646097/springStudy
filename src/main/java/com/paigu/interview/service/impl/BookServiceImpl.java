@@ -1,6 +1,6 @@
 package com.paigu.interview.service.impl;
 
-import com.paigu.interview.aop.cache.redisCacheAnnotation;
+import com.paigu.interview.aop.cache.RedisCacheAnnotation;
 import com.paigu.interview.entity.Book;
 import com.paigu.interview.service.IBookService;
 import com.paigu.interview.utils.RedisUtils;
@@ -27,7 +27,7 @@ public class BookServiceImpl implements IBookService {
 	private static final List<Book> LIST = new ArrayList<>();
 
 	@Override
-	@redisCacheAnnotation(expire = 300)
+	@RedisCacheAnnotation(expire = 300)
 	@Cacheable(value = {"aaaa", "111"}, key = "#test")
 	public List<Book> getBookList(String test){
 		redisUtils.set("111", "222");

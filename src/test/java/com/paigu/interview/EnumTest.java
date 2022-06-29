@@ -55,7 +55,7 @@ public class EnumTest {
             reentrantLock.unlock();
         }
         RedissonClient client = Redisson.create();
-        client.getLock()
+        client.getLock("asdsad");
     }
 
     public static void swap(Book b1, Book b2) {

@@ -3,7 +3,6 @@ package com.paigu.interview.aop.cache;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +21,8 @@ public class CacheAop {
 	@Autowired
 	private ObjectMapper objectMapper;
 
-	@Around("@annotation(redisCache)")
-	public Object cache(ProceedingJoinPoint joinPoint, redisCacheAnnotation redisCache) throws Throwable{
+//	@Around("@annotation(redisCache)")
+	public Object cache(ProceedingJoinPoint joinPoint, RedisCacheAnnotation redisCache) throws Throwable{
 		Object result;
 		MethodSignature signature = (MethodSignature) joinPoint.getSignature();
 		Method method = signature.getMethod();

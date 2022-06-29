@@ -3,6 +3,7 @@ package com.paigu.interview.controller;
 import cn.hutool.core.net.NetUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.servlet.ServletUtil;
+import com.paigu.interview.aop.cache.RedisCacheAnnotation;
 import com.paigu.interview.entity.Book;
 import com.paigu.interview.event.BookEvent;
 import com.paigu.interview.service.IBookService;
@@ -27,6 +28,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 @Slf4j
+@RedisCacheAnnotation
 public class BookController {
 	public BookController(@Qualifier("bookService") IBookService bookService, @Lazy ApplicationContext applicationContext, Environment environment){
 		this.bookService = bookService;

@@ -1,7 +1,7 @@
 package com.paigu.interview.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.paigu.interview.aop.cache.redisCacheAnnotation;
+import com.paigu.interview.aop.cache.RedisCacheAnnotation;
 import com.paigu.interview.entity.Info;
 import com.paigu.interview.entity.Person;
 import com.paigu.interview.mapper.PersonMapper;
@@ -49,7 +49,7 @@ public class PersonServiceImpl extends ServiceImpl<PersonMapper, Person> impleme
 		return true;
 	}
 
-	@redisCacheAnnotation
+	@RedisCacheAnnotation
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public void failPerson(){
