@@ -1,5 +1,6 @@
 package com.paigu.interview.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.paigu.interview.entity.Book;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * @author LiaoXM
  * @date 2021/09/14
  */
-public interface IBookService {
+public interface IBookService extends IService<Book> {
 	/**
 	 * 得到图书列表
 	 *
@@ -24,5 +25,5 @@ public interface IBookService {
 	 *
 	 * @param book 书
 	 */
-	void saveBook(Book book);
+	void saveBook(Book book) throws InterruptedException;
 }

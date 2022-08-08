@@ -2,17 +2,20 @@ package com.paigu.interview;
 
 import com.paigu.interview.FlyweightDesignPattern.BookFlyweight;
 import com.paigu.interview.entity.Book;
+import com.paigu.interview.service.IBookService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @SpringBootTest
 public class BookTest {
     @Autowired
     private BookFlyweight bookFlyweight;
-
+    @Autowired
+    private IBookService bookService;
     @Test
     void bookFlyweight() {
         Book book1 = new Book("我的", BigDecimal.valueOf(33.33));
@@ -30,5 +33,11 @@ public class BookTest {
                                                      .map(Book::getBookPrice)
                                                      .reduce(BigDecimal.ZERO, BigDecimal::add);
         System.out.println(reduce);
+    }
+
+    @Test
+    public void findAllBook(){
+        List<Book> list = bookService.list();
+        System.out.println(list);
     }
 }

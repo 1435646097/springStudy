@@ -8,7 +8,6 @@ package com.paigu.interview.config;
 
 import cn.hutool.core.lang.Assert;
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.parser.ParserConfig;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import io.micrometer.core.instrument.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -74,7 +73,7 @@ public class RedisConfig extends CachingConfigurerSupport {
 		template.setValueSerializer(fastJsonRedisSerializer);
 		template.setHashValueSerializer(fastJsonRedisSerializer);
 		// 全局开启AutoType，这里方便开发，使用全局的方式
-		ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
+//		ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
 		// 建议使用这种方式，小范围指定白名单
 		// ParserConfig.getGlobalInstance().addAccept("me.zhengjie.domain");
 		// key的序列化采用StringRedisSerializer

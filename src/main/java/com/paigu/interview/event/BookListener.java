@@ -10,13 +10,17 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @Component
 public class BookListener {
-	private final IBookService bookService;
+    private final IBookService bookService;
 
-	@Async("bookTaskExecutor")
-	@EventListener(BookEvent.class)
-	public void bookEvent(BookEvent bookEvent){
-		Book book = (Book) bookEvent.getSource();
-		System.out.println(Thread.currentThread().getName());
-		bookService.saveBook(book);
-	}
+    @Async("bookTaskExecutor")
+    @EventListener(BookEvent.class)
+    public void bookEvent(BookEvent bookEvent) {
+        Book book = (Book) bookEvent.getSource();
+        System.out.println(Thread.currentThread().getName());
+        try {
+            bookService.saveBook(book);
+        } catch (InterruptedException e) {
+
+        }
+    }
 }

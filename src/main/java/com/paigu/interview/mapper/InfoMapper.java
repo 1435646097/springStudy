@@ -7,10 +7,12 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+
 /**
- * @author PaiGu
- * @description 人员信息Mapper
- * @date 2022/1/29 23:09
+ * 信息映射器
+ *
+ * @author liao
+ * @date 2022/07/24
  */
 @Mapper
 public interface InfoMapper extends BaseMapper<Info> {

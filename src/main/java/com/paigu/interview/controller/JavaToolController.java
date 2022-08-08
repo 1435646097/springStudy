@@ -1,6 +1,8 @@
 package com.paigu.interview.controller;
 
+import com.paigu.interview.utils.CommonResult;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,7 +14,47 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RequiredArgsConstructor
 @RestController
+@Slf4j
 public class JavaToolController {
+	private static String A = "a";
+	private static String B = "b";
+
+	@GetMapping("/lock/dead")
+	public CommonResult deadLock(){
+		Thread thread1 = new Thread(()->{
+			synchronized (A){
+				log.info("获取了锁A");
+				try {
+					Thread.sleep(200);
+				} catch (InterruptedException e) {
+					throw new RuntimeException(e);
+				}
+				synchronized (B){
+					log.info("获取了锁B");
+				}
+				log.info("释放了锁B");
+			}
+			log.info("释放了锁A");
+		});
+		Thread thread2 = new Thread(()->{
+			synchronized (B){
+				log.info("获取了锁A");
+				try {
+					Thread.sleep(200);
+				} catch (InterruptedException e) {
+					throw new RuntimeException(e);
+				}
+				synchronized (A){
+					log.info("获取了锁B");
+				}
+				log.info("释放了锁B");
+			}
+			log.info("释放了锁A");
+		});
+		thread1.start();
+		thread2.start();
+		return CommonResult.ok("成功");
+	}
 	/**
 	 * 模拟CPU占满
 	 */
@@ -35,9 +77,10 @@ public class JavaToolController {
 	@GetMapping(value = "/memory/leak")
 	public String leak() {
 		System.out.println("模拟内存泄漏");
-		ThreadLocal<Byte[]> localVariable = new ThreadLocal<Byte[]>();
+		ThreadLocal<Byte[]> localVariable = new ThreadLocal<>();
 		// 为线程添加变量
 		localVariable.set(new Byte[4096 * 1024]);
+		localVariable.remove();
 		return "ok";
 	}
 }

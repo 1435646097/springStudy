@@ -15,6 +15,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,13 +44,19 @@ public class BookController {
 	@Value("${server.port}")
 	private String port;
 
-	@GetMapping("/pro/test")
+	@GetMapping("/book")
 	public CommonResult test(String test,HttpServletRequest request){
 		if (StrUtil.isBlank(test)) {
 			return CommonResult.fail("test必填");
 		}
 		log.info("GET请求参数:{}", request.getQueryString());
 		return CommonResult.ok(bookService.getBookList(test));
+	}
+
+	@PostMapping("/book")
+	public CommonResult createBook(@RequestBody Book book) throws InterruptedException {
+		bookService.saveBook(book);
+		return CommonResult.ok();
 	}
 
 	@GetMapping("/event")
