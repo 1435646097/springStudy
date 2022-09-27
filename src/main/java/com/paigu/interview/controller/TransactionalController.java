@@ -20,8 +20,8 @@ import java.io.IOException;
 public class TransactionalController {
 	private final IPersonService personService;
 	@GetMapping("/warning")
-	public CommonResult transactional() throws IOException{
-		personService.createPerson();
+	public CommonResult transactional(String name) throws IOException{
+		personService.createPerson(name);
 		return CommonResult.ok("成功");
 	}
 	@GetMapping("/fail")
