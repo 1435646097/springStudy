@@ -29,8 +29,7 @@ public class PersonServiceImpl extends ServiceImpl<PersonMapper, Person> impleme
 	@Override
 	public synchronized Boolean createPerson(String name) {
 		List<Person> list = this.list(Wrappers.lambdaQuery(Person.class)
-											  .eq(Person::getName, name)
-											  .last(" for update"));
+											  .eq(Person::getName, name));
 		if (CollUtil.isNotEmpty(list)) {
 			return Boolean.FALSE;
 		}

@@ -26,4 +26,6 @@ public interface IBookService extends IService<Book> {
 	 * @param book 书
 	 */
 	void saveBook(Book book) throws InterruptedException;
+
+	Integer increment();
 }

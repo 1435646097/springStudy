@@ -44,6 +44,11 @@ public class BookController {
 	@Value("${server.port}")
 	private String port;
 
+
+	 @GetMapping("/increment")
+	 public CommonResult increment(){
+		 return CommonResult.ok(bookService.increment());
+	 }
 	@GetMapping("/book")
 	public CommonResult test(String test,HttpServletRequest request){
 		if (StrUtil.isBlank(test)) {
