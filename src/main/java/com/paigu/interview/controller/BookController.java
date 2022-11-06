@@ -70,7 +70,7 @@ public class BookController {
 		return CommonResult.ok("成功了");
 	}
 
-	@GetMapping("ip")
+	@GetMapping("/ip")
 	public CommonResult ip(HttpServletRequest request){
 		String clientIP = ServletUtil.getClientIP(request);
 		if ("0:0:0:0:0:0:0:1".equals(clientIP)) {

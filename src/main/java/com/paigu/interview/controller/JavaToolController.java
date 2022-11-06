@@ -79,7 +79,7 @@ public class JavaToolController {
 		System.out.println("模拟内存泄漏");
 		ThreadLocal<Byte[]> localVariable = new ThreadLocal<>();
 		// 为线程添加变量
-		localVariable.set(new Byte[4096 * 1024]);
+		localVariable.set(new Byte[4 * 1024 * 1024]);
 		localVariable.remove();
 		return "ok";
 	}
