@@ -1,26 +1,18 @@
 package com.paigu.interview.main;
 
-import cn.hutool.core.thread.ThreadUtil;
-import lombok.var;
-
-import java.util.concurrent.TimeUnit;
+import cn.hutool.http.webservice.SoapProtocol;
+import cn.hutool.http.webservice.SoapUtil;
 
 public class FlotMain {
+    public static Integer i = 0;
+    public static volatile Integer count = 2;
+
+    public static Object lock = new Object();
     public static void main(String[] args) {
-//        ArrayList<Integer> arrayList = new ArrayList<>();
-//        arrayList.add(20);
-//        String str = "abc为";
-//        byte[] bytes = str.getBytes(StandardCharsets.UTF_8);
-//
-//        System.out.println(Arrays.toString(bytes));
-//
-//        System.out.println(Runtime.getRuntime()
-//                                  .availableProcessors());
-        FlotMain flotMain = new FlotMain();
-        int a = 10;
-        var c = "asda";
-        flotMain.add();
-        ThreadUtil.sleep(10000, TimeUnit.SECONDS);
+        System.out.println(SoapUtil.createClient("http://localhost:8080/services/test", SoapProtocol.SOAP_1_1,
+                                           "http://nmdidmsso.taiwanmobile.com")
+                      .setMethod("reconciliationAccounts")
+                                   .send(true));
     }
 
     public Integer add() {
