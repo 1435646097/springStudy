@@ -22,6 +22,7 @@ public class MapMain {
 		for (Map.Entry<String, String> stringStringEntry : map.entrySet()) {
 			System.out.println(stringStringEntry.getKey() + "-----" + stringStringEntry.getValue());
 		}
+		map.replace("asd","asdasd","asd");
 		List<Integer> list = new ArrayList<>();
 		Integer[] a = {1, 2, 3, 4, 5};
 		List<Integer> collect = Arrays.stream(a).collect(Collectors.toList());

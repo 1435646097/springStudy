@@ -18,7 +18,7 @@ spring:
     #连接超时时间
     timeout: 5000
   datasource:
-    url: jdbc:mysql://localhost:3306/common_mistakes?characterEncoding=UTF-8&useSSL=false&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://192.168.52.1:3306/common_mistakes?characterEncoding=UTF-8&useSSL=false&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
     druid:
