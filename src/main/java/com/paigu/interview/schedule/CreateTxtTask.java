@@ -1,6 +1,7 @@
 package com.paigu.interview.schedule;
 
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.IdUtil;
 import com.paigu.interview.config.FileConfig;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +29,7 @@ public class CreateTxtTask {
         FileUtil.mkdir(file);
         OutputStreamWriter outputStreamWriter = new FileWriter(fileConfig.getFilePath() + fileName + TXT_FILE);
         outputStreamWriter.write(IdUtil.simpleUUID());
+        IoUtil.close(outputStreamWriter);
         log.info("成功完成一次文件的写操作");
     }
 }

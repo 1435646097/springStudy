@@ -2,7 +2,9 @@ package com.paigu.interview.controller;
 
 import cn.hutool.core.io.FileUtil;
 import com.paigu.interview.config.FileConfig;
+import com.paigu.interview.service.FileTaskService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +26,7 @@ import java.util.UUID;
 public class FileController {
 
 	private final FileConfig fileConfig;
-
+    private final FileTaskService fileTaskService;
 	@PostMapping("/upload")
 	public String upload(MultipartFile file) throws IOException{
 		if (file.isEmpty()) {
@@ -34,5 +36,11 @@ public class FileController {
 		String suffix = FileUtil.getSuffix(file.getOriginalFilename());
 		FileUtil.writeFromStream(inputStream, fileConfig.getFilePath() + UUID.randomUUID() + "." + suffix);
 		return fileConfig.getFilePath();
+	}
+
+	@GetMapping("/filetask")
+	public String addFileTask(String fileTask){
+		fileTaskService.addTask(fileTask);
+		return fileTask+"添加成功";
 	}
 }

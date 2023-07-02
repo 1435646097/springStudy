@@ -8,6 +8,7 @@ import com.paigu.interview.entity.Book;
 import com.paigu.interview.event.BookEvent;
 import com.paigu.interview.service.IBookService;
 import com.paigu.interview.utils.CommonResult;
+import com.paigu.interview.utils.RedisUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,21 +33,24 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 @RedisCacheAnnotation
 public class BookController {
-	public BookController(@Qualifier("bookService") IBookService bookService, @Lazy ApplicationContext applicationContext, Environment environment){
+	public BookController(@Qualifier("bookService") IBookService bookService, @Lazy ApplicationContext applicationContext, Environment environment, RedisUtils redisUtils){
 		this.bookService = bookService;
 		this.applicationContext = applicationContext;
 		this.environment = environment;
+		this.redisUtils = redisUtils;
 	}
 
 	private final IBookService bookService;
 	private final ApplicationContext applicationContext;
 	private final Environment environment;
+	private final RedisUtils redisUtils;
 	@Value("${server.port}")
 	private String port;
 
 
 	 @GetMapping("/increment")
 	 public CommonResult increment(){
+		 redisUtils.set("name", "小白");
 		 return CommonResult.ok(bookService.increment());
 	 }
 	@GetMapping("/book")
