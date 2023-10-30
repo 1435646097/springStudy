@@ -1,6 +1,8 @@
 package com.paigu.interview.controller;
 
 import cn.hutool.core.net.NetUtil;
+import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import com.paigu.interview.aop.cache.RedisCacheAnnotation;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 
 
 /**
@@ -92,5 +95,16 @@ public class BookController {
 		String property = environment.getProperty("rsa.private-key");
 		log.info("密钥为{}", property);
 		return CommonResult.ok(property);
+	}
+
+	@GetMapping("/batch-insert")
+	public CommonResult batchInsert(){
+		for (int i = 0; i < 10000; i++) {
+			Book book = new Book();
+			book.setBookName(IdUtil.simpleUUID());
+			book.setBookPrice(RandomUtil.randomBigDecimal(BigDecimal.ZERO, new BigDecimal("100000")));
+			bookService.save(book);
+		}
+		return CommonResult.ok();
 	}
 }

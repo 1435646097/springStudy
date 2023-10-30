@@ -2,6 +2,7 @@ package com.paigu.interview.utils;
 
 import com.paigu.interview.aop.hide.HideAnnotation;
 import lombok.Data;
+import org.springframework.beans.factory.InitializingBean;
 
 /**
  * 通用返回结果
@@ -10,7 +11,7 @@ import lombok.Data;
  * @date 2021/10/26
  */
 @Data
-public class CommonResult {
+public class CommonResult{
 	private Integer state;
 	private String msg;
 	@HideAnnotation

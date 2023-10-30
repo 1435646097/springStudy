@@ -2,8 +2,11 @@ package com.paigu.interview.controller;
 
 import cn.hutool.core.io.FileUtil;
 import com.paigu.interview.config.FileConfig;
+import com.paigu.interview.entity.Book;
 import com.paigu.interview.service.FileTaskService;
+import com.paigu.interview.utils.RedisUtils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 /**
@@ -26,7 +30,10 @@ import java.util.UUID;
 public class FileController {
 
 	private final FileConfig fileConfig;
-    private final FileTaskService fileTaskService;
+    @Autowired
+	FileTaskService fileTaskService;
+	@Autowired
+	RedisUtils redisUtils;
 	@PostMapping("/upload")
 	public String upload(MultipartFile file) throws IOException{
 		if (file.isEmpty()) {
@@ -40,7 +47,7 @@ public class FileController {
 
 	@GetMapping("/filetask")
 	public String addFileTask(String fileTask){
-		fileTaskService.addTask(fileTask);
-		return fileTask+"添加成功";
+		redisUtils.set("name",new Book("小白元", BigDecimal.valueOf(200)));
+		return fileTask;
 	}
 }

@@ -4,6 +4,7 @@ import com.paigu.interview.service.FileTaskService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 @Service
 @Slf4j
+@ConditionalOnProperty(value = "spring.profiles.active", havingValue = "dev")
 public class FileTaskServiceImpl implements FileTaskService {
     @Qualifier("bookTaskExecutor")
     @Autowired
@@ -27,6 +29,7 @@ public class FileTaskServiceImpl implements FileTaskService {
 
     @Override
     public void addTask(String file) {
+        log.info("我是FileTaskServiceImpl");
         BLOCKING_QUEUE.add(file);
     }
 
