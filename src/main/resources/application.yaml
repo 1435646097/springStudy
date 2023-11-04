@@ -6,7 +6,7 @@ spring:
   redis:
     #数据库索引
     database: 0
-    host: 192.168.52.129
+    host: 192.168.52.10
     port: 6379
 #    password: liaoximing520@
     jedis:
@@ -21,7 +21,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/common_mistakes?characterEncoding=UTF-8&useSSL=false&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
     username: root
-    password: liaoximing520@
+    password: 123456
     druid:
       initial-size: 10
       min-idle: 5
@@ -74,4 +74,9 @@ management:
         auto-create-db: true
         bucket: siteweb_v2
         token: sPYQORH228orUNUUfYPuZ4n5kTMRxQg4TG_VZh-DK3uUbfntjpcyVepZh0eh-qooRVJ2OsN9JxRx1ZeRz7gofw==
-#      mybatis: debug
+rocketmq:
+  name-server: 192.168.52.10:9876
+  producer:
+    group: springProduceDemo
+  consumer:
+    topic: alarmChange
