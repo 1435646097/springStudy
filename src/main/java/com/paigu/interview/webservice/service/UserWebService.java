@@ -4,9 +4,9 @@ import cn.hutool.core.collection.CollUtil;
 import com.paigu.interview.webservice.dto.UserDTO;
 import org.springframework.stereotype.Service;
 
-import javax.jws.WebMethod;
-import javax.jws.WebParam;
-import javax.jws.WebService;
+import jakarta.jws.WebMethod;
+import jakarta.jws.WebParam;
+import jakarta.jws.WebService;
 import java.util.List;
 
 @Service

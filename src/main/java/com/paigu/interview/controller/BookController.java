@@ -4,13 +4,14 @@ import cn.hutool.core.net.NetUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.extra.servlet.ServletUtil;
+import cn.hutool.extra.servlet.JakartaServletUtil;
 import com.paigu.interview.aop.cache.RedisCacheAnnotation;
 import com.paigu.interview.entity.Book;
 import com.paigu.interview.event.BookEvent;
 import com.paigu.interview.service.IBookService;
 import com.paigu.interview.utils.CommonResult;
 import com.paigu.interview.utils.RedisUtils;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +23,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 
 
@@ -79,7 +79,7 @@ public class BookController {
 
 	@GetMapping("/ip")
 	public CommonResult ip(HttpServletRequest request){
-		String clientIP = ServletUtil.getClientIP(request);
+		String clientIP = JakartaServletUtil.getClientIP(request);
 		if ("0:0:0:0:0:0:0:1".equals(clientIP)) {
 			clientIP = "127.0.0.1";
 		}

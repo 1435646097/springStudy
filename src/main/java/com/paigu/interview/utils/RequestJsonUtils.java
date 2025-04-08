@@ -5,7 +5,7 @@ import cn.hutool.core.net.URLDecoder;
 import cn.hutool.core.util.StrUtil;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 

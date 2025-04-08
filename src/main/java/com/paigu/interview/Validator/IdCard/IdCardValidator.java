@@ -2,8 +2,8 @@ package com.paigu.interview.Validator.IdCard;
 
 import cn.hutool.core.util.IdcardUtil;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 /**
  * 身份证验证器

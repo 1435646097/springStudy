@@ -19,7 +19,7 @@ import java.io.OutputStream;
 @Slf4j
 public class OutPutInterceptor extends AbstractPhaseInterceptor<Message> {
 
-    public static final String JAVAX_XML_WS_WSDL_OPERATION = "javax.xml.ws.wsdl.operation";
+    public static final String jakarta_XML_WS_WSDL_OPERATION = "jakarta.xml.ws.wsdl.operation";
 
     public OutPutInterceptor() {
         super(Phase.PRE_STREAM);
@@ -38,7 +38,7 @@ public class OutPutInterceptor extends AbstractPhaseInterceptor<Message> {
             String xml = IOUtils.toString(in);
             log.info("未处理--响应的xml：" + xml);
             Document document = XmlUtil.readXML(xml);
-            String operation = message.get(JAVAX_XML_WS_WSDL_OPERATION).toString();
+            String operation = message.get(jakarta_XML_WS_WSDL_OPERATION).toString();
             StringBuffer stringBuffer = new StringBuffer();
             if (operation.contains("reconciliation")){
                 //解析报文

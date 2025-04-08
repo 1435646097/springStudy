@@ -3,25 +3,26 @@ server:
 spring:
   profiles:
     active: dev
-  redis:
-    #数据库索引
-    database: 0
-    host: 192.168.52.10
-    port: 6379
-#    password: liaoximing520@
-    jedis:
-      pool:
-        max-active: 10 # 连接池最大连接数（使用负值表示没有限制）
-        max-wait: 5000ms # 连接池最大阻塞等待时间（使用负值表示没有限制）
-        max-idle: 10 # 连接池中的最大空闲连接
-        min-idle: 2 # 连接池中的最小空闲连接
-        time-between-eviction-runs: 1000
-    #连接超时时间
-    timeout: 5000
+  data:
+    redis:
+      #数据库索引
+      database: 0
+      host: 192.168.52.10
+      port: 6379
+      #    password: liaoximing520@
+      jedis:
+        pool:
+          max-active: 10 # 连接池最大连接数（使用负值表示没有限制）
+          max-wait: 5000ms # 连接池最大阻塞等待时间（使用负值表示没有限制）
+          max-idle: 10 # 连接池中的最大空闲连接
+          min-idle: 2 # 连接池中的最小空闲连接
+          time-between-eviction-runs: 1000
+      #连接超时时间
+      timeout: 5000
   datasource:
-    url: jdbc:mysql://localhost:3306/common_mistakes?characterEncoding=UTF-8&useSSL=false&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://10.163.100.128:3306/siteweb_like?characterEncoding=UTF-8&useSSL=false&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
     username: root
-    password: 123456
+    password: siteweb1!
     druid:
       initial-size: 10
       min-idle: 5
@@ -64,16 +65,16 @@ management:
   endpoint:
     health:
       show-details: never
-  metrics:
-    export:
-      influx:
-        uri: http://192.168.52.129:8086
-        org: siteweb
+  influx:
+    metrics:
+      export:
         user-name: siteweb
-        password: siteweb@2021
-        auto-create-db: true
-        bucket: siteweb_v2
         token: sPYQORH228orUNUUfYPuZ4n5kTMRxQg4TG_VZh-DK3uUbfntjpcyVepZh0eh-qooRVJ2OsN9JxRx1ZeRz7gofw==
+        bucket: siteweb_v2
+        auto-create-db: true
+        org: siteweb
+        password: siteweb@2021
+        uri: http://192.168.52.129:8086
 rocketmq:
   name-server: 192.168.52.10:9876
   producer:
